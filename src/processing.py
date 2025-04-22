@@ -9,7 +9,7 @@ def filter_by_state(database: list, state: str = "EXECUTED") -> list:
     return new_database
 
 
-def sort_by_date(date: list, reverse_: bool = True) -> list:
+def sort_by_date(date: list, ascending: bool = True) -> list:
     """Функция сортирует данные по дате и по убыванию (поумолчанию)"""
-    data_sorted = sorted(date, key=lambda x: x.get("date", 0), reverse=reverse_)
+    data_sorted = sorted(date, key=lambda x: x.get("date", 0), reverse=ascending)
     return data_sorted
