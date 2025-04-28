@@ -30,6 +30,11 @@ def mask_account_card(account_card: str) -> str:
 
 def get_date(date: str) -> str:
     """Функция возвращает время в формате "ДД.ММ.ГГГГ" """
-    date_fixed = ".".join(list(reversed(date[:10].split("-"))))
+    for date_part in date[:10].split("-"):
+        if not date_part.isdigit():
+            raise ValueError("Invalid type of date")
+
+        elif date_part.isdigit():
+            date_fixed = ".".join(list(reversed(date[:10].split("-"))))
 
     return date_fixed
