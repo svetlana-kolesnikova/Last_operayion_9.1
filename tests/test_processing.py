@@ -28,3 +28,10 @@ def test_filter_by_state_without_state_in_list(sample_list_of_data_base_executed
 def test_sort_by_date(sample_list_of_data_base_executed_without_state: list,
                       sample_list_of_data_base_sorted_by_date: list) -> None:
     assert sort_by_date(sample_list_of_data_base_executed_without_state) == sample_list_of_data_base_sorted_by_date
+
+
+def test_sort_by_date_reverse(sample_list_of_data_base_executed_without_state: list, ascending_false: bool,
+                      sample_list_of_data_base_sorted_by_date_reverted: list) -> None:
+    assert sort_by_date(sample_list_of_data_base_executed_without_state,
+                        ascending_false) == sample_list_of_data_base_sorted_by_date_reverted
+
