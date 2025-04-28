@@ -50,6 +50,7 @@ def state_executed():
 def state_canceled():
     return 'CANCELED'
 
+
 @pytest.fixture
 def sample_list_sort_by_date():
     return [{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
