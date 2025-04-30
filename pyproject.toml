@@ -18,6 +18,8 @@ packages = [{include = "last_operations_9"}]
 
 [tool.poetry.group.dev.dependencies]
 requests = "^2.32.3"
+pytest = "^8.3.5"
+pytest-cov = "^6.1.1"
 
 
 [tool.poetry.group.lint.dependencies]
@@ -51,3 +53,9 @@ exclude = '''
 [tool.isort]
 # максимальная длина строки
 line_length = 119
+
+[tool.coverage.report]
+# исключение для покрытия тестами
+exclude_also = [
+    "if __name__ == .__main__.:",
+    ]
