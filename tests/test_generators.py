@@ -1,3 +1,5 @@
+import pytest
+
 from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
@@ -7,6 +9,25 @@ def test_card_number_generator():
     assert next(generator) == "0000 0000 0000 0009"
     assert next(generator) == "0000 0000 0000 0010"
     assert next(generator) == "0000 0000 0000 0011"
+
+
+@pytest.mark.parametrize(
+    "expected_transaction",
+    [
+        (
+            [
+                "Перевод организации",
+                "Перевод со счета на счет",
+                "Перевод со счета на счет",
+                "Перевод со счета на счет",
+            ]
+        ),
+    ],
+)
+def test_transaction_descriptions_with_parametrize(sample_transactions, expected_transaction):
+    """Тестирование функции-генератора для вывода описания транзакций через параметризацию"""
+    test_value_transaction = transaction_descriptions(sample_transactions)
+    assert list(test_value_transaction) == expected_transaction
 
 
 def test_transaction_descriptions(sample_transactions: list) -> str:
@@ -39,3 +60,10 @@ def test_filter_by_currency_success(sample_transactions: list, sample_currency_u
         "from": "Счет 19708645243227258542",
         "to": "Счет 75651667383060284188",
     }
+
+
+def test_filter_by_currency_success_no_currency(sample_transactions_rub: list, sample_currency_usd: str) -> dict:
+    """Тест для функции, выводящей транзакции с заданной валютой при отсутствии заданной валюты"""
+
+    usd_transactions_ = filter_by_currency(sample_transactions_rub, sample_currency_usd)
+    assert (next(usd_transactions_)) == "Данная валюта не найдена"
