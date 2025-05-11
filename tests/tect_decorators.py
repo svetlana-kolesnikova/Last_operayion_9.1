@@ -14,7 +14,7 @@ def test_decorator_log():
     @log(filename=None)
     def my_function_(x, y):
         return x / y
-    assert my_function(6, 3) == 2
+    assert my_function_(6, 3) == 2
 
 
 def test_decorator_log_error():
@@ -26,6 +26,13 @@ def test_decorator_log_error():
 def test_decorator_cupsys(capsys):
     """Тестирование декоратора с выходом ошибки с фикстурой cupsys"""
     with pytest.raises(Exception):
-        my_function()
-        captured = my_function.readouterr()
-        assert captured.out == Exception
+        my_function(6, 0)
+        captured = capsys.readouterr()
+        assert 'error' in captured.out
+
+
+def test_decorator_cupsys_2(capsys):
+    """Тестирование декоратора без выхода ошибки с фикстурой cupsys"""
+    my_function(6, 3)
+    captured = capsys.readouterr()
+    assert "ok" in captured.out
