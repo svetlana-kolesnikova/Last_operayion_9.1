@@ -1,18 +1,21 @@
-def card_number_generator(start: int, end: int) -> str:
+from typing import Generator
+
+
+def card_number_generator(start: int, end: int) -> Generator:
     """Функция-генератор для создания номеров банковских карт"""
     for num in range(start, end):
         num_card = str(num).zfill(16)
         yield f"{num_card[0:4]} {num_card[4:8]} {num_card[8:12]} {num_card[12:]}"
 
 
-def transaction_descriptions(transactions_: list) -> str:
+def transaction_descriptions(transactions_: list) -> Generator:
     """Функция-генератор возвращает описание каждой транзакции по очереди"""
     for transaction in transactions_:
         description = transaction.get("description")
         yield description
 
 
-def filter_by_currency(transactions: list, currency: str) -> dict:
+def filter_by_currency(transactions: list, currency: str) -> Generator:
     """Функция возвращает итератор, возвращающий поочередно транзакции с заданной валютой"""
     flag = True
     for transaction in transactions:
