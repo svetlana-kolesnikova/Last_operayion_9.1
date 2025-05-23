@@ -209,3 +209,8 @@ def sample_transactions_rub():
             "to": "Счет 75651667383060284188",
         },
     ]
+
+
+@pytest.fixture()
+def path():
+    return "../data/operations.json"

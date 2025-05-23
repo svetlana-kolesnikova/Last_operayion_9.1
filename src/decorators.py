@@ -1,10 +1,10 @@
 from typing import Any, Callable, Union
 
 
-def log(filename=None):
+def log(filename=None) -> Any:
     """Декоратор для логирования функций и вывода результатов в консоль или файл"""
     def wrapper(fnc: Callable) -> Any:
-        def inner(*args, **kwargs) -> Any:
+        def inner(*args: Any, **kwargs: Any) -> Any:
             try:
                 result = fnc(*args, **kwargs)
                 if filename:
