@@ -12,7 +12,7 @@ path_to_json = PATH / "data" / "operations.json"
 load_dotenv()
 
 API_KEY = os.getenv('API_KEY')
-payload = {}
+payload: dict[Any, Any] = {}
 headers = {"apikey": API_KEY}
 
 currency_code = "RUB"
