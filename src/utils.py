@@ -29,5 +29,5 @@ def read_json(path: Any) -> List[Dict[Any, Any]]:
         return []
 
 
-result = read_json(path_to_json)
-print(type(result))
+# result = read_json(path_to_json)
+# print(type(result))
