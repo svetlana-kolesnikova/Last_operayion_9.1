@@ -1,4 +1,9 @@
 import logging
+import os
+
+# Убедиться, что каталог логов существует
+os.makedirs("../logs", exist_ok=True)
+
 
 """Логгирование модуля masks.py"""
 

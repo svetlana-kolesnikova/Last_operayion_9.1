@@ -20,7 +20,7 @@ def log(filename=None) -> Any:
                         file.write(f"{fnc.__name__} error: {e}. Inputs: {args}, {kwargs}\n")
                 else:
                     print(f"{fnc.__name__} error: {e}. Inputs: {args}, {kwargs}\n")
-                raise Exception("Деление на ноль невозможно")
+                # raise Exception("Деление на ноль невозможно")
 
         return inner
     return wrapper
