@@ -1,7 +1,5 @@
 from typing import Any
 
-import pytest
-
 from src.decorators import log
 
 
@@ -20,20 +18,6 @@ def test_decorator_log() -> Any:
 
     assert my_function_(6, 3) == 2
 
-#
-# def test_decorator_log_error() -> Any:
-#     """Тестирование декоратора с выходом ошибки"""
-#     with pytest.raises(Exception):
-#         my_function(6, 0)
-
-#
-# def test_decorator_cupsys(capsys: Any) -> Any:
-#     """Тестирование декоратора с выходом ошибки с фикстурой cupsys"""
-#     with pytest.raises(Exception):
-#         my_function(6, 0)
-#         captured = capsys.readouterr()
-#         assert "error" in captured.out
-#
 
 def test_decorator_cupsys_2(capsys: Any) -> Any:
     """Тестирование декоратора без выхода ошибки с фикстурой cupsys"""
