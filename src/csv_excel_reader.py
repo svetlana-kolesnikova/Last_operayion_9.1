@@ -11,7 +11,7 @@ path_to_excel = PATH / "data" / "transactions_excel.xlsx"
 def reader_csv(path: Any) -> List[Dict[Any, Any]]:
     """Функция для чтения файла csv. Возвращает список словарей с транзакциями"""
     try:
-        reader = pd.read_csv(path)
+        reader = pd.read_csv(path, delimiter = ";")
         financial_operations_csv = reader.to_dict(orient="records")
         return financial_operations_csv
     except (FileNotFoundError, Exception):
