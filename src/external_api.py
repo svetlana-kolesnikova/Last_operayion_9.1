@@ -11,13 +11,13 @@ path_to_json = PATH / "data" / "operations.json"
 
 load_dotenv()
 
-API_KEY = os.getenv('API_KEY')
+API_KEY = os.getenv("API_KEY")
 payload: dict[Any, Any] = {}
 headers = {"apikey": API_KEY}
 
 currency_code = "RUB"
 
-with open(path_to_json, encoding='utf-8') as file:
+with open(path_to_json, encoding="utf-8") as file:
     """Чтение файла json"""
     transactions_ = json.load(file)
 
@@ -60,5 +60,5 @@ def transaction_summ(transactions: list[dict[Any, Any]], code: str) -> list[floa
     return results_
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(transaction_summ(transactions_, currency_code))
