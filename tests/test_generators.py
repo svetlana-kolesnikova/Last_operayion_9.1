@@ -1,9 +1,11 @@
+from typing import Any
+
 import pytest
 
 from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
-def test_card_number_generator():
+def test_card_number_generator() -> Any:
     """Тестирование функции с разным количеством десятков"""
     generator = card_number_generator(9, 12)
     assert next(generator) == "0000 0000 0000 0009"
@@ -24,13 +26,15 @@ def test_card_number_generator():
         ),
     ],
 )
-def test_transaction_descriptions_with_parametrize(sample_transactions, expected_transaction):
+def test_transaction_descriptions_with_parametrize(
+    sample_transactions: list[dict[Any, Any]], expected_transaction: Any
+) -> Any:
     """Тестирование функции-генератора для вывода описания транзакций через параметризацию"""
     test_value_transaction = transaction_descriptions(sample_transactions)
     assert list(test_value_transaction) == expected_transaction
 
 
-def test_transaction_descriptions(sample_transactions: list) -> str:
+def test_transaction_descriptions(sample_transactions: list) -> Any:
     """Тестирование функции-генератора для вывода описания транзакций"""
     test_description = transaction_descriptions(sample_transactions)
     assert next(test_description) == "Перевод организации"
@@ -38,7 +42,7 @@ def test_transaction_descriptions(sample_transactions: list) -> str:
     assert next(test_description) == "Перевод со счета на счет"
 
 
-def test_filter_by_currency_success(sample_transactions: list, sample_currency_usd: str) -> dict:
+def test_filter_by_currency_success(sample_transactions: list, sample_currency_usd: str) -> Any:
     """Тест для функции, выводящей транзакции с заданной валютой"""
 
     usd_transactions = filter_by_currency(sample_transactions, sample_currency_usd)
@@ -62,7 +66,7 @@ def test_filter_by_currency_success(sample_transactions: list, sample_currency_u
     }
 
 
-def test_filter_by_currency_success_no_currency(sample_transactions_rub: list, sample_currency_usd: str) -> dict:
+def test_filter_by_currency_success_no_currency(sample_transactions_rub: list, sample_currency_usd: str) -> Any:
     """Тест для функции, выводящей транзакции с заданной валютой при отсутствии заданной валюты"""
 
     usd_transactions_ = filter_by_currency(sample_transactions_rub, sample_currency_usd)

@@ -31,36 +31,36 @@
 #         print(f"Итого: {round(time_2 - time_1, 2)}")
 #         return result
 #     return wrapper
-
-def digit_int(func):
-    def wrapper(*args, **kwargs):
-        print("Start")
-        result = func(*args, **kwargs)
-        if type(result) == float:
-            print("Stop")
-            return round(result)
-
-        elif type(result) in (list, tuple):
-            # rounded = [round(x) if type(x) == float else x for x in result]
-            for x in result:
-                if type(x) == float:
-                    rounded = round(x)
-                else:
-
-                    print("Stop")
-            return type(result)(rounded)
-        else:
-            print("Stop")
-            return result
-
-    return wrapper
-
-@digit_int
-def func(a, b):
-    summ_func = a + b
-    return summ_func
-
-print(func(60, 3))
+#
+# def digit_int(func):
+#     def wrapper(*args, **kwargs):
+#         print("Start")
+#         result = func(*args, **kwargs)
+#         if type(result) == float:
+#             print("Stop")
+#             return round(result)
+#
+#         elif type(result) in (list, tuple):
+#             # rounded = [round(x) if type(x) == float else x for x in result]
+#             for x in result:
+#                 if type(x) == float:
+#                     rounded = round(x)
+#                 else:
+#
+#                     print("Stop")
+#             return type(result)(rounded)
+#         else:
+#             print("Stop")
+#             return result
+#
+#     return wrapper
+#
+# @digit_int
+# def func(a, b):
+#     summ_func = a + b
+#     return summ_func
+#
+# print(func(60, 3))
 
 # def exclamation_mark(function):
 #     def wrapper(*args, **kwargs):
@@ -111,3 +111,16 @@ print(func(60, 3))
     #         continue
     #
     # example()
+#
+#
+# # Создание строки с текстом
+# text_data = "Посетите наш сайт: <https://www.example.com>. Также, проверьте новости по адресу: <http://news.example.org>."
+# pattern = r'[(http|https)]://[a-z]+\.[a-zA-z0-9]+\.[a-z]+'
+# result = re.findall(pattern, text_data, re.IGNORECASE)
+#
+# print(result)
+
+import pandas as pd
+
+df = pd.DataFrame({'Yes': [50, 21], 'No': [131, 2]})
+print(pd)

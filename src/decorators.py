@@ -1,8 +1,9 @@
 from typing import Any, Callable, Union
 
 
-def log(filename=None) -> Any:
+def log(filename: Any = None) -> Any:
     """Декоратор для логирования функций и вывода результатов в консоль или файл"""
+
     def wrapper(fnc: Callable) -> Any:
         def inner(*args: Any, **kwargs: Any) -> Any:
             try:
@@ -20,13 +21,13 @@ def log(filename=None) -> Any:
                         file.write(f"{fnc.__name__} error: {e}. Inputs: {args}, {kwargs}\n")
                 else:
                     print(f"{fnc.__name__} error: {e}. Inputs: {args}, {kwargs}\n")
-                raise Exception("Деление на ноль невозможно")
 
         return inner
+
     return wrapper
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     @log(filename="mylog.txt")  # filename="mylog.txt" filename=None
     def my_function(x: Union[int, float], y: Union[int, float]) -> Any:

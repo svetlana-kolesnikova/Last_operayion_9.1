@@ -1,8 +1,7 @@
 def mask_account_card(account_card: str) -> str:
     """Функция обрабатывает информацию как о картах, так и о счетах"""
     split_account_card = account_card.split(" ")
-    if ("Счет" in account_card and len(account_card) != 25
-            or "Счет" in account_card and not account_card[5:].isdigit()):
+    if "Счет" in account_card and len(account_card) != 25 or "Счет" in account_card and not account_card[5:].isdigit():
         raise ValueError("Invalid type of number")
 
     elif account_card[-17] == " " and not account_card[-16:].isdigit():

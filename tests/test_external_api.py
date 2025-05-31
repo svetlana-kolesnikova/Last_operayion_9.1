@@ -5,7 +5,7 @@ from src.external_api import transaction_summ
 
 
 @patch("src.external_api.requests.get")
-def test_transaction_summ_usd_success(mock_get):
+def test_transaction_summ_usd_success(mock_get: Any) -> Any:
     """Тест для функции конвертации валюты при успешном
     обращении к стороннему сервису. Валюта "USD" """
 
@@ -21,7 +21,7 @@ def test_transaction_summ_usd_success(mock_get):
 
 
 @patch("src.external_api.requests.get")
-def test_transaction_summ_faild(mock_get):
+def test_transaction_summ_faild(mock_get: Any) -> Any:
     """Тест для функции конвертации валюты при отсутствии ответа от стороннего сервиса"""
     mock_response = Mock()
     mock_response.status_code = 500
@@ -30,7 +30,7 @@ def test_transaction_summ_faild(mock_get):
     transactions = [{"operationAmount": {"amount": "100", "currency": {"code": "USD"}}}]
 
     transaction_summ(transactions, "RUB")
-    assert f"Не успешный запрос, код ошибки: 500"
+    assert "Не успешный запрос, код ошибки: 500"
 
 
 def test_transaction_summ_no_operationamount(
@@ -44,7 +44,7 @@ def test_transaction_summ_no_operationamount(
         assert transaction_summ(no_operationamount, sample_currency_rub)
 
 
-def test_transaction_summ_rub(no_amount: list[dict[Any, Any]], sample_currency_rub: str) -> Any:
+def test_transaction_summ_rub(no_amount: list[dict[Any, Any]], sample_currency_rub: str) -> None:
     """Тест для проверки наличия ключа "amount" """
     for transact in no_amount:
         operation_amount = transact.get("operationAmount")
