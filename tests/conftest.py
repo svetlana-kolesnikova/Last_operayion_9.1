@@ -294,12 +294,25 @@ def amount_none() -> list[dict]:
 
 
 @pytest.fixture
-def sample_transactions_rub_2():
+def sample_transactions_rub_2() -> list[dict]:
     return [
         {"id": 1, "amount": 1000, "currency_code": "RUB"},
         {"id": 2, "amount": 2000, "currency_code": "USD"},
         {"id": 3, "amount": 3000, "currency_code": "RUB"},
         {"id": 4, "amount": None, "currency_code": "RUB"},  # amount is None
-        {"id": 5, "amount": 5000, "currency_code": None},   # currency_code is None
+        {"id": 5, "amount": 5000, "currency_code": None},  # currency_code is None
         {"id": 6},  # missing both keys
+    ]
+
+
+@pytest.fixture
+def sample_transactions_2() -> list[dict]:
+    return [
+        {"id": 1, "description": "Перевод с карты на карту", "state": "EXECUTED"},
+        {"id": 2, "description": "Перевод со счета на счет", "state": "CANCELED"},
+        {"id": 3, "description": "Перевод организации", "state": "EXECUTED"},
+        {"id": 4, "description": "Пополнение вклада", "state": "CANCELED"},
+        {"id": 5, "description": "Без описания", "state": "EXECUTED"},
+        {"id": 6, "description": None, "state": "NaN"},
+        {"id": 7, "state": "EXECUTED"},  # description отсутствует
     ]
