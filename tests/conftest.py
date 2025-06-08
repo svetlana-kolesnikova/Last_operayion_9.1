@@ -291,3 +291,15 @@ def amount_none() -> list[dict]:
             "to": "Счет 11776614605963066702",
         },
     ]
+
+
+@pytest.fixture
+def sample_transactions_rub_2():
+    return [
+        {"id": 1, "amount": 1000, "currency_code": "RUB"},
+        {"id": 2, "amount": 2000, "currency_code": "USD"},
+        {"id": 3, "amount": 3000, "currency_code": "RUB"},
+        {"id": 4, "amount": None, "currency_code": "RUB"},  # amount is None
+        {"id": 5, "amount": 5000, "currency_code": None},   # currency_code is None
+        {"id": 6},  # missing both keys
+    ]
