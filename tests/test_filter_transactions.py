@@ -37,14 +37,7 @@ def test_search_operation_description_is_none(sample_transactions_2: list[dict[A
     assert results[0]["id"] == 4
 
 
-def test_basic_count(sample_transactions_3, categories):
+def test_basic_count(sample_transactions_3: list[dict[Any, Any]], categories: list) -> Any:
     """Проверка подсчёта количества операций для всех категорий из исходных данных."""
-    expected = {
-        'Перевод организации': 3,
-        'Открытие вклада': 1,
-        'Перевод со счета на счет': 2
-    }
+    expected = {"Перевод организации": 3, "Открытие вклада": 1, "Перевод со счета на счет": 2}
     assert transactions_counter_by_type(sample_transactions_3, categories) == expected
-    
-
-    
