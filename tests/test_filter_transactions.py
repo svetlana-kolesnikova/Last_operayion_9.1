@@ -37,24 +37,14 @@ def test_search_operation_description_is_none(sample_transactions_2: list[dict[A
     assert results[0]["id"] == 4
 
 
-def test_transactions_counter_ignores_nan_and_empty(sample_transactions_2: list[dict[Any, Any]]) -> Any:
-    """Тестирование при отсутствии значения ключа "state" и отсутствии ключа "state" """
-    bad_data = [
-        {"id": 1, "state": "NaN"},
-        {"id": 2, "state": ""},
-        {"id": 3, "state": None},
-        {"id": 4},  # без ключа state
-    ]
-    result = transactions_counter_by_type(bad_data, ["EXECUTED", "CANCELED"])
-    assert result == {}
+def test_basic_count(sample_transactions_3, categories):
+    """Проверка подсчёта количества операций для всех категорий из исходных данных."""
+    expected = {
+        'Перевод организации': 3,
+        'Открытие вклада': 1,
+        'Перевод со счета на счет': 2
+    }
+    assert transactions_counter_by_type(sample_transactions_3, categories) == expected
+    
 
-
-def test_transactions_counter_empty_input() -> Any:
-    """Тестирование при пустом вводе пользователя"""
-    assert transactions_counter_by_type([], ["EXECUTED"]) == {}
-
-
-def test_transactions_counter_unallowed_types(sample_transactions_2: list[dict[Any, Any]]) -> Any:
-    """Тестирование при передаче данных с отсутствующими типами"""
-    result = transactions_counter_by_type(sample_transactions_2, ["PENDING"])
-    assert result == {}
+    
