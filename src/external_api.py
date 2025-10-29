@@ -5,7 +5,7 @@ from typing import Any
 import requests
 from dotenv import load_dotenv
 
-from config import PATH
+from config import CURRENCY, PATH
 
 path_to_json = PATH / "data" / "operations.json"
 
@@ -42,7 +42,7 @@ def transaction_summ(transactions: list[dict[Any, Any]], code: str) -> list[floa
         except (ValueError, TypeError):
             continue  # Пропускаем транзакцию с нечисловым значением
 
-        if transact_code in ("USD", "EUR"):
+        if transact_code in CURRENCY:
             url = (
                 f"https://api.apilayer.com/exchangerates_data/convert?"
                 f"to={code}&from={transact_code}&amount={amount}"
